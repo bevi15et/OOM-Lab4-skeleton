@@ -24,8 +24,8 @@ public class TimeZoneTranslatorTest {
 	@Before
 	public void setUp() throws Exception {
 		//Test
-		testObject = new DateTime(2018, 11, 11, 11, 11, 11);
-		testObject2 = new DateTime(2018, 11, 11, 11, 22, 11);
+		testObject = new DateTime(2018, 11, 11, 11, 11);
+		testObject2 = new DateTime(2018, 11, 11, 11, 22);
 
 		guy = new Person("Victor");
 		gal = new Person("Kim");
@@ -35,39 +35,39 @@ public class TimeZoneTranslatorTest {
 		testEvent = new Event("Something happens", testObject, testObject2, new HashSet<>(Arrays.asList(gal, guy)), jonkoping);
 		
 		//Bug fix test
-		bugTestObject = new DateTime(2016, 01, 01, 06, 00, 00);
+		bugTestObject = new DateTime(2016, 01, 01, 06, 00);
 
 	}
 
 	@Test
 	public void testShiftTimeZone() {
-		assertEquals("2018-11-11 16:11:11", TimeZoneTranslator.shiftTimeZone(testObject, -1, 4).toString());	
+		assertEquals("2018-11-11 16:11", TimeZoneTranslator.shiftTimeZone(testObject, -1, 4).toString());	
 
 	}
 
 	@Test
 	public void testShiftEventTimeZone() {
-		assertEquals("2018-11-11 15:11:11", TimeZoneTranslator.shiftEventTimeZone(testEvent, TimeZone.CENTRAL_EUROPEAN_TIME, TimeZone.PAKISTAN).getStartDate().toString());
-		assertEquals("2018-11-11 15:22:11", TimeZoneTranslator.shiftEventTimeZone(testEvent, TimeZone.CENTRAL_EUROPEAN_TIME, TimeZone.PAKISTAN).getEndDate().toString());
+		assertEquals("2018-11-11 15:11", TimeZoneTranslator.shiftEventTimeZone(testEvent, TimeZone.CENTRAL_EUROPEAN_TIME, TimeZone.PAKISTAN).getStartDate().toString());
+		assertEquals("2018-11-11 15:22", TimeZoneTranslator.shiftEventTimeZone(testEvent, TimeZone.CENTRAL_EUROPEAN_TIME, TimeZone.PAKISTAN).getEndDate().toString());
 
 	}
 	
 	@Test
 	public void testShiftTimeZone2() {
-		assertEquals("2015-12-31 21:00:00", TimeZoneTranslator.shiftTimeZone(bugTestObject, 1, -8).toString());
+		assertEquals("2015-12-31 21:00", TimeZoneTranslator.shiftTimeZone(bugTestObject, 1, -8).toString());
 		
 	}
 	
 	@Test
 	public void testShiftTimeZone3() {
-		assertEquals("2016-01-01 00:00:00", TimeZoneTranslator.shiftTimeZone(bugTestObject, 1, -5).toString());
+		assertEquals("2016-01-01 00:00", TimeZoneTranslator.shiftTimeZone(bugTestObject, 1, -5).toString());
 		
 	}
 	
 	@Test
 	public void testDateTime() {
-		testStringConstructor = new DateTime("2018-07-07 07:07:07");
-		assertEquals("2018-07-07 07:07:07", testStringConstructor.toString());
+		testStringConstructor = new DateTime("2018-07-07 07:07");
+		assertEquals("2018-07-07 07:07", testStringConstructor.toString());
 		
 	}
 	
