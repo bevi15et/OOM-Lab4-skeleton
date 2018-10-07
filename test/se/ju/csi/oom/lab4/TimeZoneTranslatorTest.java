@@ -57,4 +57,10 @@ public class TimeZoneTranslatorTest {
 		
 	}
 	
+	@Test
+	public void testShiftTimeZone3() {
+		assertEquals("2016-01-01 00:00:00", TimeZoneTranslator.shiftTimeZone(bugTestObject, 1, -5).toString());
+		
+	}
+	
 }
