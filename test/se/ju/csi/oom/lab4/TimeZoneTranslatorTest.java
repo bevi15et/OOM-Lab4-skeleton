@@ -12,6 +12,7 @@ public class TimeZoneTranslatorTest {
 	DateTime testObject;
 	DateTime testObject2;
 	DateTime bugTestObject;
+	DateTime testStringConstructor;
 	
 	Person guy;
 	Person gal;
@@ -60,6 +61,13 @@ public class TimeZoneTranslatorTest {
 	@Test
 	public void testShiftTimeZone3() {
 		assertEquals("2016-01-01 00:00:00", TimeZoneTranslator.shiftTimeZone(bugTestObject, 1, -5).toString());
+		
+	}
+	
+	@Test
+	public void testDateTime() {
+		testStringConstructor = new DateTime("2018-07-07 07:07:07");
+		assertEquals("2018-07-07 07:07:07", testStringConstructor.toString());
 		
 	}
 	
